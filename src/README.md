@@ -31,6 +31,14 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| GET    | `/announcements`                                                  | List announcements currently within their date range                |
+| GET    | `/announcements/manage`                                           | List all announcements (teacher session required)                    |
+| POST   | `/announcements`                                                  | Create an announcement (teacher session required)                    |
+| PUT    | `/announcements/{announcement_id}`                                | Update an announcement (teacher session required)                    |
+| DELETE | `/announcements/{announcement_id}`                                | Delete an announcement (teacher session required)                    |
+| POST   | `/auth/login?username=...&password=...`                           | Sign in and receive a bearer session token                           |
+
+Send the token returned by `/auth/login` in the `Authorization: Bearer <token>` header for protected endpoints. An announcement body must include `message` and an ISO-8601 `expiration_date`; `start_date` is optional.
 
 ## Data Model
 
